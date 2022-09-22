@@ -1,15 +1,19 @@
 import React from "react";
 import { useEffect } from "react";
-
+import { IoMdPin } from "react-icons/io";
+import { Search2Icon } from "@chakra-ui/icons";
 import { Cart } from "../components/Cart";
 import {
   Box,
+  Button,
   Divider,
   Flex,
   Heading,
+  Image,
   Input,
   InputGroup,
   InputLeftElement,
+  InputRightElement,
   Select,
 } from "@chakra-ui/react";
 import { IoMdSearch } from "react-icons/io";
@@ -17,6 +21,7 @@ import "./home.css"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getData, getLocation } from "../redux/app/action";
+import Navbar from "../components/Navbar"
 export const Home = () => {
   const data=useSelector(state=>state.app.data);
   const location=useSelector(state=>state.app.location);
@@ -34,6 +39,33 @@ export const Home = () => {
    dispatch(getData())
   }, [dispatch]);
   return (
+    <>
+    <Navbar></Navbar>
+    <Box >
+        <Image
+          w={"100%"}
+          h={"60vh"}
+          objectFit={"fill"}
+          src="/homeHeading.png"
+        />
+      </Box>
+      <Box w={"90%"} m={" 100px auto"} border={"3px solid white"} borderRadius={"7px"} p={"10px"} color={"white"} >
+        <InputGroup size="md">
+          <InputLeftElement>
+          <Search2Icon  fontSize={"25px"}/>
+          </InputLeftElement>
+          <Input border={"none"} placeholder="Search"  fontSize={"25px"} />
+          <InputRightElement >
+            <Flex mr={"150px"}>
+              <Button m={"0px 15px"} bgColor={"#be0808"} _hover={{bg:"#920909"}}  >
+                <IoMdPin fontSize={"25px"} color={"white"} />
+              </Button>
+              <Button bgColor={"#be0808"} color={"white"} width={"110px"}  _hover={{bg:"#920909"}} fontSize={"20px"}>Clear</Button>
+            </Flex>
+          </InputRightElement>
+        </InputGroup>
+      </Box>
+    
     <Flex>
       <Flex color={"white"} direction={"column"} gap={"20px"} textAlign={"left"} padding={"30px"} width={"25%"}>
         <Heading as="h4" size="md">
@@ -83,12 +115,13 @@ export const Home = () => {
         
         </Flex>}
       </Flex>
-      <Box width={"75%"} height={"90vh"} overflow={"scroll"}>
+      <Box width={"75%"} height={"90vh"} overflow={"scroll"} overflowX={"hidden"} >
         {data.map((e) => {
           return <Link to={`/details/${e.user_id}`} key={e.user_id}><Cart  data={e}></Cart></Link>
           ;
         })}
       </Box>
     </Flex>
+    </>
   );
 };

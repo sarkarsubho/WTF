@@ -16,54 +16,75 @@ export const Details = () => {
   let { id } = useParams();
   let { data, terms } = useSelector((state) => state.app);
   let [currentData, setCurrentData] = useState({});
-  const MembershipData=[
+  const MembershipData = [
     {
-      price:3000,
-      description:"12 spring strength workout program following this plan to report your work out , build learn mess, and boost strength gain",
-      title:"MTY (3 Month)"
+      price: 3000,
+      description:
+        "12 spring strength workout program following this plan to report your work out , build learn mess, and boost strength gain",
+      title: "MTY (3 Month)",
+      color1:"#6FAE80",
+      color2:"#598A66"
+
     },
     {
-      price:6999,
-      description:"",
-      title:"Slim your waist"
+      price: 6999,
+      description: "",
+      title: "Slim your waist",
+      color1:"#B43B3B",
+      color2:"#975550"
     },
     {
-      price:9999,
-      description:"",
-      title:"Giant X"
+      price: 8999,
+      description: "",
+      title: "Giant X",
+      color1:"#3E74B3",
+      color2:"#438373"
     },
     {
-      price:6999,
-      description:"",
-      title:"Beach Body"
+      price: 5999,
+      description: "",
+      title: "Beach Body",
+      color1:"#8A516E",
+      color2:"#B8779A"
     },
     {
-      price:6999,
-      description:"",
-      title:"Fat To Fit"
+      price: 6999,
+      description: "",
+      title: "Fat To Fit",
+      color1:"#6FAE80",
+      color2:"#598A66"
     },
     {
-      price:10000,
-      description:"Change your body by adding lean muscles while losing fat and go from zero to zero a complete guide from start to finish.I am hare to show you the way",
-      title:"MTY (12 Month)"
+      price: 10000,
+      description:
+        "Change your body by adding lean muscles while losing fat and go from zero to zero a complete guide from start to finish.I am hare to show you the way",
+      title: "MTY (12 Month)",
+    color1:"#8A516E",
+      color2:"#B8779A"
     },
     {
-      price:4000,
-      description:"Follow this plan to reboot your workout billion mass and boost strength gains",
-      title:"MTY (6 Month)"
+      price: 4000,
+      description:
+        "Follow this plan to reboot your workout billion mass and boost strength gains",
+      title: "MTY (6 Month)",
+      color1:"#B43B3B",
+      color2:"#975550"
     },
     {
-      price:1000,
-      description:"Whether you are just starting--or  starting again-- this  Fast Track workout plan will help you drastically improve your Phsique and fitness level",
-      title:"MTY (1 Month)"
-    }
-  ]
+      price: 1000,
+      description:
+        "Whether you are just starting--or  starting again-- this  Fast Track workout plan will help you drastically improve your Phsique and fitness level",
+      title: "MTY (1 Month)",
+      color1:"#6FAE80",
+      color2:"#598A66"
+    },
+  ];
   useEffect(() => {
     if (id) {
       let tmp = data.find((el) => el.user_id === id);
       tmp && setCurrentData(tmp);
     }
-  }, [id,data]);
+  }, [id, data]);
   console.log(currentData, terms);
   return (
     <Box>
@@ -75,7 +96,7 @@ export const Details = () => {
             leftIcon={<AiOutlineLeft></AiOutlineLeft>}
             position={"absolute"}
             fontSize={"25px"}
-            top={"30px"}
+            top={"90px"}
             left={"40px"}
             _hover={{ bg: "none" }}
           >
@@ -83,6 +104,7 @@ export const Details = () => {
           </Button>
         </Link>
         <Image
+         objectFit={"fill"}
           src={currentData?.cover_image}
           width={"100%"}
           height={"500px"}
@@ -124,7 +146,7 @@ export const Details = () => {
 
       {/* Description and MemberShip Section */}
 
-      <Flex padding={"40px"} color={"white"} textAlign={"left"}>
+      <Flex padding={"40px"} color={"white"} textAlign={"left"} justifyContent={"space-between"}>
         <Flex w={"50%"} direction="column" gap={"60px"}>
           <Box>
             <Text fontSize="25px" mb={"40px"}>
@@ -190,23 +212,21 @@ export const Details = () => {
         </Flex>
 
         <Flex
-          w={"50%"}
+          w={"45%"}
           bg={"#2E2E2E"}
           direction={"column"}
           borderRadius={"20px"}
           padding={"35px"}
+          gap={"20px"}
+
         >
-          <Heading as="h3" size="lg"  textAlign={"center"} mb={"25px"}>
+          <Heading as="h3" size="lg" textAlign={"center"} mb={"25px"}>
             Choose Membership
           </Heading>
 
-           {
-   MembershipData.map((el,i)=>{
-    return <MembershipCart key={i} data={el} plan={i}></MembershipCart>
-   })
-
-           }
-
+          {MembershipData.map((el, i) => {
+            return <MembershipCart key={i} data={el} plan={i}></MembershipCart>;
+          })}
         </Flex>
       </Flex>
 
