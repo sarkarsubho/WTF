@@ -1,6 +1,9 @@
 .cart{
     background-image: linear-gradient(to right, #242424,#191919 ,#131313, #131313);
-    width: 400px;
-    height: 200px;
+    height: 400px;
     margin-top: 2px;
+    color: aliceblue;
+    text-align: left;
+    border-radius: 20px;
+    margin-bottom: 30px;
 }
