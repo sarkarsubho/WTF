@@ -3,9 +3,9 @@ import React from "react";
 import "./cart.css";
 import { AiOutlineStar } from "react-icons/ai";
 import { FaLocationArrow } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 export const Cart = ({ data }) => {
-  console.log("from cart", data);
+  // console.log("from cart", data);
   return (
     
     <Flex className="cart">
@@ -21,7 +21,7 @@ export const Cart = ({ data }) => {
           <Heading as="h4" size="md">
           {data.gym_name}
         </Heading>
-       <Flex>
+       <Flex fontSize={"20px"}>
         <AiOutlineStar></AiOutlineStar>
         <AiOutlineStar></AiOutlineStar>
         <AiOutlineStar></AiOutlineStar>
