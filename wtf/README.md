@@ -14,8 +14,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  using [axios](https://www.npmjs.com/package/axios)
   ## For managing State and Data Flow
  using [redux](https://www.npmjs.com/package/redux)
- and [react-redux] (https://www.npmjs.com/package/react-redux)
- and [redux-thunk] (https://www.npmjs.com/package/redux-thunk)
+ **and [react-redux] (https://www.npmjs.com/package/react-redux)
+ **and [redux-thunk] (https://www.npmjs.com/package/redux-thunk)
  fro convert the async request to plain object for the reduser.
  ## For managing Routing in the application
  using [react-router-dom] (https://www.npmjs.com/package/react-router-dom)
