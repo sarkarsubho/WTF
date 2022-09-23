@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { IoMdPin } from "react-icons/io";
 import { Search2Icon } from "@chakra-ui/icons";
 import { Cart } from "../components/Cart";
@@ -22,18 +22,30 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getData, getLocation } from "../redux/app/action";
 import Navbar from "../components/Navbar"
+
 export const Home = () => {
   const data=useSelector(state=>state.app.data);
   const location=useSelector(state=>state.app.location);
   console.log("location",location)
   const dispatch=useDispatch();
-  // const [data, setData] = useState([]);
-  // const [terms, setTerms] = useState([]);
+  const [appendData, setappendData] = useState(data);
+  
+  const handleSort=(val)=>{
+  console.log("sorted By",val);
+  console.log(data)
+   let sortedData=data.filter((e)=>e.address1 === val);
+   setappendData(sortedData);
+   console.log(sortedData)
+  
+  }
   
   const handleChange=(val)=>{
     console.log(val);
     dispatch(getLocation(val))
   }
+  useEffect(()=>{
+   setappendData(data)
+  },[data])
   useEffect(() => {
 
    dispatch(getData())
@@ -52,9 +64,9 @@ export const Home = () => {
       <Box w={"90%"} m={" 100px auto"} border={"3px solid white"} borderRadius={"7px"} p={"10px"} color={"white"} >
         <InputGroup size="md">
           <InputLeftElement>
-          <Search2Icon  fontSize={"25px"}/>
+          <Search2Icon  fontSize={"22px"}/>
           </InputLeftElement>
-          <Input border={"none"} placeholder="Search"  fontSize={"25px"} />
+          <Input border={"none"} placeholder="Search"  fontSize={"23px"} />
           <InputRightElement >
             <Flex mr={"150px"}>
               <Button m={"0px 15px"} bgColor={"#be0808"} _hover={{bg:"#920909"}}  >
@@ -103,7 +115,7 @@ export const Home = () => {
         <Box background={"#424242"}  borderRadius={"10px"} border={"3px solid gray"}>
            {
           location.map((e,i)=>{
-            return <Box key={i} >
+            return <Box key={i} onClick={()=>handleSort(e.address1)} cursor={"pointer"}>
               <Box padding={"10px"}>{e.address1},{e.address2} </Box>
               
               {/* <hr></hr> */}
@@ -116,7 +128,7 @@ export const Home = () => {
         </Flex>}
       </Flex>
       <Box width={"75%"} height={"90vh"} overflow={"scroll"} overflowX={"hidden"} >
-        {data.map((e) => {
+        {appendData.map((e) => {
           return <Link to={`/details/${e.user_id}`} key={e.user_id}><Cart  data={e}></Cart></Link>
           ;
         })}

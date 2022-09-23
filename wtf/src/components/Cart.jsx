@@ -43,9 +43,9 @@ export const Cart = ({ data }) => {
         <Flex justifyContent={"space-between"}>
         <Heading as="h4" size="md" color={"#E2B411"}>
           
-          {data.plan_price || "₹ 3600 for 3 Months"}
+          {data.plan_price || "₹ 3000 for 3 Months"}
         </Heading>
-        <Button background={"#920909"}> Book Now</Button>
+        <Button background={"#920909"} _hover={{bg:"#750309"}} _active={{opacity:"0.8"}}> Book Now</Button>
         </Flex>
       </Flex>
       

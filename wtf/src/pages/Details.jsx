@@ -2,7 +2,7 @@ import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { AiOutlineLeft } from "react-icons/ai";
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -11,11 +11,13 @@ import "./Detail.css";
 import { Benefits } from "../components/Benefits";
 import { Terms } from "../components/Terms";
 import { MembershipCart } from "../components/MembershipCart";
+import { getData } from "../redux/app/action";
 
 export const Details = () => {
   let { id } = useParams();
   let { data, terms } = useSelector((state) => state.app);
   let [currentData, setCurrentData] = useState({});
+  const dispatch=useDispatch();
   const MembershipData = [
     {
       price: 3000,
@@ -85,6 +87,11 @@ export const Details = () => {
       tmp && setCurrentData(tmp);
     }
   }, [id, data]);
+  useEffect(()=>{
+   if(data.length===0){
+    dispatch(getData())
+   }
+  },[data,dispatch])
   console.log(currentData, terms);
   return (
     <Box>
@@ -96,8 +103,9 @@ export const Details = () => {
             leftIcon={<AiOutlineLeft></AiOutlineLeft>}
             position={"absolute"}
             fontSize={"25px"}
-            top={"90px"}
+            top={"40px"}
             left={"40px"}
+            _active={{bg:"none"}}
             _hover={{ bg: "none" }}
           >
             {"Back"}{" "}
@@ -243,7 +251,7 @@ export const Details = () => {
           h={"60px"}
           fontSize={"20px"}
           w={"350px"}
-          _hover={{ bg: "#920909" }}
+          _hover={{bg:"#750309"}}
           bg={"#920909"}
         >
           {" "}
