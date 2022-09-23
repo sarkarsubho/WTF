@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+
+
+ 
+ 
+ # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# This App using the bellow dependencies to complete it.
+
+ For the UI it use's [@chakra-ui/react](https://chakra-ui.com/getting-started)
+
+ For Icons using [react-icons] (https://react-icons.github.io/react-icons)
+ ## For async operation and Network call
+ using [axios](https://www.npmjs.com/package/axios)
+  ## For managing State and Data Flow
+ using [redux](https://www.npmjs.com/package/redux)
+ and [react-redux] (https://www.npmjs.com/package/react-redux)
+ and [redux-thunk] (https://www.npmjs.com/package/redux-thunk)
+ fro convert the async request to plain object for the reduser.
+ ## For managing Routing in the application
+ using [react-router-dom] (https://www.npmjs.com/package/react-router-dom)
 
 ## Available Scripts
 
