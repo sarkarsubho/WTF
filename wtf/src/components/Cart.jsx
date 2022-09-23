@@ -11,12 +11,13 @@ export const Cart = ({ data }) => {
     <Flex className="cart">
       
       <Image className="image"
-        width="50%"
+        width={"50%"}
         objectFit="cover"
         src={data.cover_image}
         alt={"coverPic"}
+        display={["none","block"]}
       ></Image>
-      <Flex p={"20px"} direction={"column"} gap={"20px"} width={"50%"} justifyContent={"space-between"}>
+      <Flex p={"20px"} direction={"column"} gap={"20px"} width={["100%","50%"]} justifyContent={"space-between"} backgroundImage={[data.cover_image,"none"]} backgroundSize={"cover"} >
         <Flex direction={"column"} gap={"20px"}>
           <Heading as="h4" size="md">
           {data.gym_name}

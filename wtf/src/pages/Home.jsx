@@ -61,7 +61,7 @@ export const Home = () => {
           src="/homeHeading.png"
         />
       </Box>
-      <Box w={"90%"} m={" 100px auto"} border={"3px solid white"} borderRadius={"7px"} p={"10px"} color={"white"} >
+      <Box w={"90%"} m={["50px auto"," 100px auto"]} border={"3px solid white"} borderRadius={"7px"} p={"10px"} color={"white"} >
         <InputGroup size="md">
           <InputLeftElement>
           <Search2Icon  fontSize={"22px"}/>
@@ -78,8 +78,8 @@ export const Home = () => {
         </InputGroup>
       </Box>
     
-    <Flex>
-      <Flex color={"white"} direction={"column"} gap={"20px"} textAlign={"left"} padding={"30px"} width={"25%"}>
+    <Flex direction={["column","column","row","row"]}>
+      <Flex color={"white"} direction={"column"} gap={"20px"} textAlign={"left"} padding={"30px"} width={["100%","25%"]}>
         <Heading as="h4" size="md">
           Location
         </Heading>
@@ -127,7 +127,7 @@ export const Home = () => {
         
         </Flex>}
       </Flex>
-      <Box width={"75%"} height={"90vh"} overflow={"scroll"} overflowX={"hidden"} >
+      <Box width={["100%","75%"]} height={"90vh"} overflow={"scroll"} overflowX={"hidden"} padding={["15px"]}>
         {appendData.map((e) => {
           return <Link to={`/details/${e.user_id}`} key={e.user_id}><Cart  data={e}></Cart></Link>
           ;

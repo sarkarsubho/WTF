@@ -12,75 +12,13 @@ import { Benefits } from "../components/Benefits";
 import { Terms } from "../components/Terms";
 import { MembershipCart } from "../components/MembershipCart";
 import { getData } from "../redux/app/action";
-
+import {MembershipData} from "../data/MembershipData"
 export const Details = () => {
   let { id } = useParams();
   let { data, terms } = useSelector((state) => state.app);
   let [currentData, setCurrentData] = useState({});
   const dispatch=useDispatch();
-  const MembershipData = [
-    {
-      price: 3000,
-      description:
-        "12 spring strength workout program following this plan to report your work out , build learn mess, and boost strength gain",
-      title: "MTY (3 Month)",
-      color1:"#6FAE80",
-      color2:"#598A66"
-
-    },
-    {
-      price: 6999,
-      description: "",
-      title: "Slim your waist",
-      color1:"#B43B3B",
-      color2:"#975550"
-    },
-    {
-      price: 8999,
-      description: "",
-      title: "Giant X",
-      color1:"#3E74B3",
-      color2:"#438373"
-    },
-    {
-      price: 5999,
-      description: "",
-      title: "Beach Body",
-      color1:"#8A516E",
-      color2:"#B8779A"
-    },
-    {
-      price: 6999,
-      description: "",
-      title: "Fat To Fit",
-      color1:"#6FAE80",
-      color2:"#598A66"
-    },
-    {
-      price: 10000,
-      description:
-        "Change your body by adding lean muscles while losing fat and go from zero to zero a complete guide from start to finish.I am hare to show you the way",
-      title: "MTY (12 Month)",
-    color1:"#8A516E",
-      color2:"#B8779A"
-    },
-    {
-      price: 4000,
-      description:
-        "Follow this plan to reboot your workout billion mass and boost strength gains",
-      title: "MTY (6 Month)",
-      color1:"#B43B3B",
-      color2:"#975550"
-    },
-    {
-      price: 1000,
-      description:
-        "Whether you are just starting--or  starting again-- this  Fast Track workout plan will help you drastically improve your Phsique and fitness level",
-      title: "MTY (1 Month)",
-      color1:"#6FAE80",
-      color2:"#598A66"
-    },
-  ];
+  
   useEffect(() => {
     if (id) {
       let tmp = data.find((el) => el.user_id === id);
@@ -120,26 +58,26 @@ export const Details = () => {
       </Box>
 
       {/* Title & Rating Section */}
-      <Flex color={"white"} justifyContent={"space-between"} padding="50px">
+      <Flex color={"white"} justifyContent={"space-between"} padding={["10px","50px"]}>
         <Flex direction="column">
-          <Heading as="h2" size="3xl" noOfLines={1}>
+          <Heading as="h2" size={["md","3xl"]} noOfLines={1}>
             {currentData?.gym_name}
           </Heading>
-          <Flex alignItems={"center"} gap={"10px"} fontSize={"25px"}>
-            <HiOutlineLocationMarker></HiOutlineLocationMarker>
+          <Flex alignItems={"center"} gap={"10px"} fontSize={["15px","25px"]}>
+            <HiOutlineLocationMarker ></HiOutlineLocationMarker>
             <Text>
               {" "}
               {currentData?.address1}, {currentData?.address2}
             </Text>
           </Flex>
         </Flex>
-        <Flex bg={"#920909"} width={"200px"} h={"90px"} direction={"column"}>
+        <Flex bg={"#920909"} width={["150px","200px"]} h={["70px","90px"]} direction={"column"}>
           <Flex
             justifyContent={"center"}
             w={"100%"}
             fontSize={"25px"}
             gap={"5px"}
-            padding={"10px"}
+            padding={["5px","10px"]}
           >
             <AiFillStar></AiFillStar>
             <AiFillStar></AiFillStar>
@@ -154,8 +92,8 @@ export const Details = () => {
 
       {/* Description and MemberShip Section */}
 
-      <Flex padding={"40px"} color={"white"} textAlign={"left"} justifyContent={"space-between"}>
-        <Flex w={"50%"} direction="column" gap={"60px"}>
+      <Flex padding={"40px"} color={"white"} textAlign={"left"} justifyContent={"space-between"} direction={["column","column","row","row"]} gap={"30px"}>
+        <Flex w={["100%","100%","50%","50%"]} direction="column" gap={"60px"}>
           <Box>
             <Text fontSize="25px" mb={"40px"}>
               Description
@@ -169,7 +107,7 @@ export const Details = () => {
             <Text fontSize="25px" mb={"40px"}>
               Facilities
             </Text>
-            <Flex gap={"20px"} textAlign="center">
+            <Flex gap={"20px"} textAlign="center" flexWrap={"wrap"} >
               {currentData?.benefits?.map((e) => {
                 return <Benefits key={e.id} data={e.name}></Benefits>;
               })}
@@ -180,7 +118,7 @@ export const Details = () => {
             <Text fontSize="25px" mb={"40px"}>
               Why to choose WTF?
             </Text>
-            <Flex gap={"20px"} flexWrap={"wrap"} textAlign="center">
+            <Flex gap={"20px"} flexWrap={"wrap"} textAlign="center" justifyContent={["center","start"]}>
               {terms?.map((e) => {
                 return <Terms key={e.uid} data={e}></Terms>;
               })}
@@ -220,7 +158,7 @@ export const Details = () => {
         </Flex>
 
         <Flex
-          w={"45%"}
+          w={["100%","100%","45%","45%"]}
           bg={"#2E2E2E"}
           direction={"column"}
           borderRadius={"20px"}
@@ -244,13 +182,15 @@ export const Details = () => {
         height={"250px"}
         justifyContent={"space-around"}
         alignItems={"center"}
+        direction={["column","column","row","row"]}
+        padding={"30px"}
       >
         <Button
           color={"white"}
           borderRadius={"35px"}
           h={"60px"}
           fontSize={"20px"}
-          w={"350px"}
+          w={["240px","350px"]}
           _hover={{bg:"#750309"}}
           bg={"#920909"}
         >
@@ -262,7 +202,7 @@ export const Details = () => {
           borderRadius={"35px"}
           h={"60px"}
           fontSize={"20px"}
-          w={"350px"}
+          w={["240px","350px"]}
           _hover={{ bg: "none" }}
           variant={"outline"}
         >
